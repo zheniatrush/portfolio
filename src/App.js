@@ -5,7 +5,7 @@ import AppRoutes from "./components/Routes/AppRoutes";
 function App() {
    return (
       <div className="App">
-         <BrowserRouter>
+         <BrowserRouter basename="/portfolio">
             <AppRoutes />
          </BrowserRouter>
       </div>
