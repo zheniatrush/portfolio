@@ -21,7 +21,7 @@ const Footer = () => {
                      Про мене
                   </Typography>
                   <Typography variant="body2">
-                     Я створюю найкращі рішення для вашого бізнесу.
+                     Мене звати Женя Труш
                   </Typography>
                </Grid>
                <Grid>
@@ -43,8 +43,8 @@ const Footer = () => {
                   align="center"
                >
                   {"© "}
-                  {new Date().getFullYear()} Моя компанія успіху. Всі права
-                  захищені.
+                  {new Date().getFullYear()} by paddingmaster. Всі права захищені.
+                  
                </Typography>
             </Box>
          </Container>

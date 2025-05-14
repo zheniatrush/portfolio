@@ -10,3 +10,4 @@ export const fetchWeather = async (city) => {
       console.error(error);
    }
 };
+   

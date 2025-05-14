@@ -1,130 +1,219 @@
 import {
-   Box,
-   Typography,
-   Button,
-   Grid,
-   Card,
-   CardContent,
-   CardActions,
+  Box,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  CardActions,
 } from "@mui/material";
 
 const projects = {
-   htmlCss: [
-      {
-         title: "Інтернет магазин",
-         url: "https://github.com/oleksandrkoval63/tdrive-prod",
-      },
-      {
-         title: "Інформаційна база суддів",
-         url: "https://github.com/oleksandrkoval63/wax",
-      },
-   ],
-   javascript: [
-      {
-         title: "Калькулятор",
-         url: "https://github.com/oleksandrkoval63/js-DOM1",
-      },
-      {
-         title: "Next.js",
-         url: "https://next-js-practic-six.vercel.app/users",
-      },
-   ],
-   react: [
-      {
-         title: "Favorite Books",
-         url: "https://github.com/oleksandrkoval63/react-redux-new",
-      },
-      {
-         title: "Хлібобулочний магазин Chikery",
-         url: "https://chikery-bv177s0wb-burito228s-projects.vercel.app",
-      },
-   ],
+  htmlCss: [
+    {
+      title: "Інтернет магазин",
+      url: "https://github.com/zheniatrush/funiro",
+    },
+    {
+      title: "Сайт пекарні",
+      url: "https://github.com/zheniatrush/bacery",
+    },
+  ],
+  javascript: [
+    {
+      title: "Портфоліо",
+      url: "https://github.com/zheniatrush/AlexSmith",
+    },
+    {
+      title: "НАТК",
+      url: "https://github.com/zheniatrush/natc",
+    },
+  ],
+  react: [
+    {
+      title: "use-effect",
+      url: "https://github.com/zheniatrush/use-effect",
+    },
+    {
+      title: "Сайт пекарні",
+      url: "https://github.com/zheniatrush/bacery",
+    },
+  ],
 };
 
 const AboutMe = () => {
-   return (
-      <div>
-         <Box sx={{ px: 4, py: 6 }}>
-            <Typography variant="h4" gutterBottom>
-               Про мене
-            </Typography>
-            <Typography variant="body1" paragraph>
-               Привіт! Мене звати Олександр. Я — відповідальний, допитливий і
-               креативний розробник. Люблю навчатися, вирішувати складні
-               завдання і створювати зрозумілі інтерфейси.
-            </Typography>
-            <Typography variant="body1" paragraph>
-               🎯 Ціную чесність, послідовність та співпрацю. Захоплююсь React
-               розробкою, люблю мандрувати і вивчати нові технології.
-            </Typography>
-            <Typography variant="body1" paragraph>
-               📚 Навчаюсь у ВНЗ за спеціальністю "Комп'ютерні науки". Постійно
-               покращую знання фронтенду та працюю над власними проєктами.
+  // Об’єднуємо всі проєкти в один масив із категорією
+  const allProjects = Object.entries(projects).flatMap(([category, repos]) =>
+    repos.map((repo) => ({ ...repo, category }))
+  );
+
+  // Функція для читабельного відображення категорії
+  
+
+  return (
+    <Box
+      sx={{
+        px: { xs: 3, md: 8 },
+        py: { xs: 6, md: 10 },
+        bgcolor: "#f5f7fa",
+        minHeight: "100vh",
+        maxWidth: 1200,
+        mx: "auto",
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          fontWeight: 900,
+          fontFamily: "'Roboto Slab', serif",
+          color: "#1976d2",
+          letterSpacing: "0.1em",
+          mb: 4,
+          textAlign: "center",
+          userSelect: "none",
+        }}
+      >
+        Про мене
+      </Typography>
+
+      <Box
+        sx={{
+          maxWidth: 720,
+          mx: "auto",
+          mb: 8,
+          fontSize: 18,
+          color: "#424242",
+          lineHeight: 1.7,
+          fontWeight: 500,
+          fontFamily: "'Open Sans', sans-serif",
+          textAlign: "justify",
+          px: { xs: 1, md: 0 },
+        }}
+      >
+        <Typography paragraph>
+          Привіт! Мене звати Євгеній Труш. Я — відповідальний, цілеспрямований
+          та креативний розробник. Захоплююсь вирішенням складних задач і
+          створенням інтуїтивних інтерфейсів.
+        </Typography>
+        <Typography paragraph>
+          Ціную ефективну командну роботу, відкритість до нового та професійний
+          розвиток. Особливо цікавлюсь React та сучасними веб-технологіями.
+        </Typography>
+        <Typography paragraph>
+          Навчаюсь у ВНЗ за спеціальністю "Програмна інженерія". Постійно
+          розвиваюсь, працюю над проєктами з реальними користувачами та
+          вдосконалюю навички.
+        </Typography>
+      </Box>
+
+      <Typography
+        variant="h5"
+        sx={{
+          mb: 6,
+          fontWeight: 700,
+          fontFamily: "'Roboto Slab', serif",
+          color: "#1976d2",
+          letterSpacing: "0.05em",
+          textAlign: "center",
+          userSelect: "none",
+        }}
+      >
+        Мої проєкти
+      </Typography>
+
+      {/* Групуємо проєкти по категоріях з підзаголовками */}
+      {["htmlCss", "javascript", "react"].map((cat) => {
+        const filtered = allProjects.filter((p) => p.category === cat);
+        return (
+          <Box key={cat} sx={{ mb: 6 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                color: "#1565c0",
+                mb: 3,
+                fontFamily: "'Roboto Slab', serif",
+                letterSpacing: "0.05em",
+                textAlign: "center",
+              }}
+            >
+              
             </Typography>
 
-            <Typography variant="h5" sx={{ mt: 6, mb: 2 }}>
-               Мої проєкти
-            </Typography>
-
-            {Object.entries(projects).map(([category, repos]) => (
-               <Box key={category} sx={{ mt: 4 }}>
-                  <Typography variant="h6" gutterBottom>
-                     {category === "htmlCss"
-                        ? "HTML + CSS"
-                        : category === "javascript"
-                        ? "JavaScript"
-                        : "React"}
-                  </Typography>
-
-                  <Grid container spacing={2} justifyContent="center">
-                     {repos.map((repo, index) => (
-                        <Grid item xs={12} md={6} key={index}>
-                           <Card
-                              sx={{
-                                 width: 300,
-                                 display: "flex",
-                                 flexDirection: "column",
-                                 justifyContent: "space-between",
-                                 minHeight: 200,
-                                 background:
-                                    "linear-gradient(135deg, #2196f3, #21cbf3)", // синій градієнт
-                                 color: "white",
-                                 borderRadius: 3,
-                                 boxShadow:
-                                    "0 4px 20px rgba(33, 150, 243, 0.3)",
-                                 transition: "transform 0.3s ease",
-                                 "&:hover": {
-                                    transform: "scale(1.03)",
-                                    boxShadow:
-                                       "0 6px 25px rgba(33, 150, 243, 0.5)",
-                                 },
-                              }}
-                           >
-                              <CardContent sx={{ flexGrow: 1 }}>
-                                 <Typography variant="h6">
-                                    {repo.title}
-                                 </Typography>
-                              </CardContent>
-                              <CardActions sx={{ justifyContent: "center" }}>
-                                 <Button
-                                    size="small"
-                                    color="#fff"
-                                    href={repo.url}
-                                    target="_blank"
-                                    rel="noopener"
-                                 >
-                                    GitHub
-                                 </Button>
-                              </CardActions>
-                           </Card>
-                        </Grid>
-                     ))}
-                  </Grid>
-               </Box>
-            ))}
-         </Box>
-      </div>
-   );
+            <Grid container spacing={4} justifyContent="center">
+              {filtered.map((repo, idx) => (
+                <Grid item xs={12} sm={6} md={4} key={idx}>
+                  <Card
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      borderRadius: 3,
+                      boxShadow: "0 8px 20px rgba(21, 101, 192, 0.15)",
+                      transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                      bgcolor: "#ffffff",
+                      "&:hover": {
+                        transform: "translateY(-8px)",
+                        boxShadow: "0 16px 40px rgba(21, 101, 192, 0.3)",
+                      },
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        flexGrow: 1,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: 700,
+                          color: "#0d47a1",
+                          textAlign: "center",
+                          fontFamily: "'Roboto Slab', serif",
+                        }}
+                      >
+                        {repo.title}
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ justifyContent: "center", pb: 3 }}>
+                      <Button
+                        variant="contained"
+                        href={repo.url}
+                        target="_blank"
+                        rel="noopener"
+                        sx={{
+                          bgcolor: "#1976d2",
+                          color: "#fff",
+                          fontWeight: 700,
+                          px: 4,
+                          py: 1.5,
+                          borderRadius: 3,
+                          textTransform: "none",
+                          boxShadow: "0 4px 12px rgba(25, 118, 210, 0.4)",
+                          transition:
+                            "background-color 0.3s ease, box-shadow 0.3s ease",
+                          "&:hover": {
+                            bgcolor: "#1565c0",
+                            boxShadow: "0 6px 16px rgba(21, 101, 192, 0.6)",
+                          },
+                        }}
+                      >
+                        GitHub
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        );
+      })}
+    </Box>
+  );
 };
 
 export default AboutMe;
